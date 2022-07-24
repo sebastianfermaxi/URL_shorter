@@ -11,12 +11,12 @@ const validarURL = (req, res, next) => {
             ) {
                 return next();
             }
+            throw new Error("URL no válida");
         }
-        throw new Error("No válida 😪");
+        
     } catch (error) {
-        console.log(error);
-        const mensaje = 'url no válida'
-        res.render("error",{mensaje});
+        req.flash("mensajes",[{msg:"URL no válida"}])
+        res.redirect('/');
     }
 };
 
