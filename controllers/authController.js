@@ -36,7 +36,7 @@ const registerUser = async (req,res)=>{
             from: 'Acortador de URL',
             to: user.email,
             subject: "Verifique cuenta de correo de Acortador de URLs",
-            html: `<a href="http://localhost:5000/auth/confirmar/${user.token}">Verificar cuenta aquí</a>`,
+            html: `<a href="${process.env.pathHeroku || "http://localhost:5000"}/auth/confirmar/${user.token}">Verificar cuenta aquí</a>`,
         });
      
         req.flash("mensajes", [{ msg: "Revisa tu email y confirma tu cuenta" }]);
